@@ -1,0 +1,66 @@
+---
+title: "Primera entrega proyecto"
+output: html_notebook
+---
+### Manuela Acosta Fajardo, Carlos Sebastián Martínez Vidal, Jessenia Piza Londoño 
+
+#### Cargamos los datos: 
+```{r}
+dat_red = read.csv('winequality-red.csv', sep=';')
+dat_white = read.csv('winequality-white.csv', sep=';')
+```
+
+### Análisis estadístico inicial de los datos
+
+#### Media de los atributos  
+
+```{r}
+
+#Media de los atributos de vino tinto 
+mean_dat_red = c(mean(dat_red$fixed.acidity),mean(dat_red$volatile.acidity),mean(dat_red$citric.acid),mean(dat_red$residual.sugar),mean(dat_red$chlorides),mean(dat_red$free.sulfur.dioxide),mean(dat_red$total.sulfur.dioxide),mean(dat_red$density),mean(dat_red$pH),mean(dat_red$sulphates),mean(dat_red$alcohol),mean(dat_red$quality))
+
+#Media de los atributis de vino blanco 
+mean_dat_white = c(mean(dat_white$fixed.acidity),mean(dat_white$volatile.acidity),mean(dat_white$citric.acid),mean(dat_white$residual.sugar),mean(dat_white$chlorides),mean(dat_white$free.sulfur.dioxide),mean(dat_white$total.sulfur.dioxide),mean(dat_white$density),mean(dat_white$pH),mean(dat_white$sulphates),mean(dat_white$alcohol),mean(dat_white$quality))
+
+#Uniendo las medias 
+mean_dat = data.frame(matrix(c(mean_dat_red, mean_dat_white), nrow=2, byrow = TRUE))
+
+names(mean_dat)=names(dat_red)
+rownames(mean_dat)=c("dat_red", "dat_white")
+mean_dat
+```
+#### Varianzas de los atributos 
+
+```{r}
+
+#Varianza de los atributos de vino tinto 
+var_dat_red = c(var(dat_red$fixed.acidity),var(dat_red$volatile.acidity),var(dat_red$citric.acid),var(dat_red$residual.sugar),var(dat_red$chlorides),var(dat_red$free.sulfur.dioxide),var(dat_red$total.sulfur.dioxide),var(dat_red$density),var(dat_red$pH),var(dat_red$sulphates),var(dat_red$alcohol),var(dat_red$quality))
+
+#Varianza de los atributis de vino blanco 
+var_dat_white = c(var(dat_white$fixed.acidity),var(dat_white$volatile.acidity),var(dat_white$citric.acid),var(dat_white$residual.sugar),var(dat_white$chlorides),var(dat_white$free.sulfur.dioxide),var(dat_white$total.sulfur.dioxide),var(dat_white$density),var(dat_white$pH),var(dat_white$sulphates),var(dat_white$alcohol),var(dat_white$quality))
+
+#Uniendo las varianzas
+var_dat = data.frame(matrix(c(var_dat_red, var_dat_white), nrow=2, byrow = TRUE))
+
+names(var_dat)=names(dat_red)
+rownames(var_dat)=c("dat_red", "dat_white")
+var_dat
+```
+
+#### Desviaciones estándar de los atributos 
+
+```{r}
+
+#Desviación estándar de los atributos de vino tinto 
+sd_dat_red = c(sd(dat_red$fixed.acidity),sd(dat_red$volatile.acidity),sd(dat_red$citric.acid),sd(dat_red$residual.sugar),sd(dat_red$chlorides),sd(dat_red$free.sulfur.dioxide),sd(dat_red$total.sulfur.dioxide),sd(dat_red$density),sd(dat_red$pH),sd(dat_red$sulphates),sd(dat_red$alcohol),sd(dat_red$quality))
+
+#Desviación estándar de los atributis de vino blanco 
+sd_dat_white = c(sd(dat_white$fixed.acidity),sd(dat_white$volatile.acidity),sd(dat_white$citric.acid),sd(dat_white$residual.sugar),sd(dat_white$chlorides),sd(dat_white$free.sulfur.dioxide),sd(dat_white$total.sulfur.dioxide),sd(dat_white$density),sd(dat_white$pH),sd(dat_white$sulphates),sd(dat_white$alcohol),sd(dat_white$quality))
+
+#Uniendo las desviaciones estándar
+sd_dat = data.frame(matrix(c(sd_dat_red, sd_dat_white), nrow=2, byrow = TRUE))
+
+names(sd_dat)=names(dat_red)
+rownames(sd_dat)=c("dat_red", "dat_white")
+sd_dat
+```
